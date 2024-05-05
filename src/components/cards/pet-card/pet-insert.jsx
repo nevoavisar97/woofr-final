@@ -8,7 +8,6 @@ import {
   KeyboardAvoidingView,
   Keyboard,
   Image,
-  ScrollView,
   Alert,
 } from "react-native";
 
@@ -35,11 +34,8 @@ import LoadingIndicator from "../../../components/animation/loading-indicator/lo
 
 // Importing function from the API file
 import { insertPet } from "../../../utils/api/pet";
-import RegularTextBold from "../../texts/regular-text/regular-text-bold";
 
 const AddPet = ({ showRegister, setRender }) => {
-  // Set state to store image
-  const [image, setImage] = useState(null);
 
   // State for storing text to be displayed in the snackbar and visibility of the snackbar
   const [snackBarText, setSnackBarText] = useState("");
@@ -55,14 +51,17 @@ const AddPet = ({ showRegister, setRender }) => {
   const auth = useSelector(selectAuth);
   const myUser = JSON.parse(auth.user);
 
+  // Set state to store image
+  const [image, setImage] = useState(null);
+
   const [petData, setPetData] = useState({
     id: uuid.v4(),
     userId: myUser.id,
     name: "",
-    birthYear: "",
+    birthYear: 2024,
     breed: "",
     bio: "",
-    imageUrl: null,
+    imageUrl: image,
   });
 
   const pickImage = async () => {
@@ -71,7 +70,6 @@ const AddPet = ({ showRegister, setRender }) => {
       alert("יש לאפשר גישה לגלריה כדי לבחור תמונות.");
       return;
     }
-
     Alert.alert(
       "בחר מקור תמונה",
       "אנא בחר מקור תמונה:",
@@ -140,16 +138,21 @@ const AddPet = ({ showRegister, setRender }) => {
 
   const handleAddPet = async () => {
     setLoading(true);
-    // Convert birthYear to an integer
-    const formattedPetData = { ...petData, birthYear: parseInt(petData.birthYear) };
-
+    let url = "null";
     if (image) {
-      const url = await uploadImage(image, `profile/${myUser.id}`);
+      url = await uploadImage(image, `petByProfile/${petData.id}`);
       // Update profilePictureUrl in updatedUser with the newly uploaded image URL
-      formattedPetData.imageUrl = url; // Update imageUrl directly in formattedPetData
     }
-
-    const res = await insertPet(formattedPetData);
+    const newPet = {
+      id: petData.id,
+      userId: myUser.id,
+      name: petData.name,
+      birthYear: 2024,
+      breed: petData.breed,
+      bio: petData.bio,
+      imageUrl: url,
+    }
+    const res = await insertPet(newPet);
     if (res) {
       showRegister(false);
       setRender();
@@ -166,7 +169,7 @@ const AddPet = ({ showRegister, setRender }) => {
         style={styles.container}
       >
         {!loading ? (
-          <View style={{alignItems:"center"}}>
+          <View style={{ alignItems: "center" }}>
             <View style={styles.circleContainer}>
               {image ? (
                 <TouchableOpacity onPress={pickImage}>
@@ -189,7 +192,7 @@ const AddPet = ({ showRegister, setRender }) => {
                 setPetData({ ...petData, name: value });
               }}
             />
-            <CustomTextInput
+            {/* <CustomTextInput
               value={petData.birthYear.toString()}
               placeholder="שנת לידה"
               width={formWidth}
@@ -199,7 +202,7 @@ const AddPet = ({ showRegister, setRender }) => {
                   setPetData({ ...petData, birthYear: value });
                 }
               }}
-            />
+            /> */}
             <CustomTextInput
               value={petData.breed}
               placeholder="גזע"

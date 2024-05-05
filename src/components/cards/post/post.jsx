@@ -44,7 +44,9 @@ const Post = ({ data, onImgPress, setRender }) => {
 
   // An array containing users who liked the post
   const [likes, setLikes] = useState([]);
+  
   const [maxH, setMaxH] = useState(290);
+  
   const [readMore, setReadMore] = useState("");
 
   // Indicates whether the current user has liked the post
