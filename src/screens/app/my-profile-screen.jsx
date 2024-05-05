@@ -99,8 +99,9 @@ const ProfileScreen = () => {
   // Execute the provided callback when the component gains focus
   useFocusEffect(
     useCallback(() => {
+      setSelectedPetData(null);
+      setAddPetPressed(false);
       setMyPosts([]);
-      setMyPets([]);
       fetchUserData();
     }, [refreshing])
   );
@@ -122,6 +123,7 @@ const ProfileScreen = () => {
   const onRefresh = () => {
     // Set refreshing to true immediately
     setSelectedPetData(null);
+    setMyPets([]);
     setMyPosts([]);
     setRefreshing(true);
   };

@@ -262,7 +262,7 @@ const styles = StyleSheet.create({
     borderWidth: 2,
   },
   circleContainer: {
-    
+
     width: "100%",
     alignItems: "center",
     justifyContent: "center",
@@ -281,7 +281,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   imagePreview: {
-    
+
     width: 150,
     height: 150,
     borderRadius: 100,

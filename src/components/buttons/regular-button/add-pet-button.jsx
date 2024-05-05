@@ -6,7 +6,7 @@ import {
   TouchableOpacity,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
-import { useFonts, Rubik_700Bold } from "@expo-google-fonts/assistant";
+import { useFonts, Rubik_700Bold } from "@expo-google-fonts/rubik";
 
 // App color palate
 import { colorPalate } from "../../../utils/ui/colors";
@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     textAlign: "left",
     padding: 4,
-    fontFamily: "Assistant_700Bold", // Use Assistant bold font
+    fontFamily: "Rubik_700Bold", // Use Assistant bold font
   },
 });
 
