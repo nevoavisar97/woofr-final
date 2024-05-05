@@ -44,6 +44,8 @@ const Post = ({ data, onImgPress, setRender }) => {
 
   // An array containing users who liked the post
   const [likes, setLikes] = useState([]);
+  const [maxH, setMaxH] = useState(290);
+  const [readMore, setReadMore] = useState("");
 
   // Indicates whether the current user has liked the post
   const [likeThis, setLikeThis] = useState(false);
@@ -70,6 +72,17 @@ const Post = ({ data, onImgPress, setRender }) => {
       }
     });
   };
+
+  const setMaxHeight = () => {
+    if (maxH === 290){
+      setMaxH("100%");
+      setReadMore("צמצום");
+    }
+    else{
+    setReadMore("קרא/י עוד");
+    setMaxH(290);
+    }
+  }
 
   // Function to handle deleting a post
   const deletePostById = async (post_id) => {
@@ -102,11 +115,13 @@ const Post = ({ data, onImgPress, setRender }) => {
   useEffect(() => {
     // Fetch user information on initial render and whenever likeThis changes
     fetchUserInfo();
+    setMaxH(290);
 
     // Calculate and set the formatted time string on initial render or data change
     if (data) {
       var str = calculateTimeAgo(data.createdAt);
       setTimeStr(str);
+      if (data.content.length > 450) setReadMore("קרא/י עוד");
     }
 
     // Fetch likes on initial render and whenever data is available
@@ -143,10 +158,13 @@ const Post = ({ data, onImgPress, setRender }) => {
           </View>
         )}
       </View>
-      <View style={styles.input}>
+      <View style={[styles.input, { maxHeight: maxH }]}>
         <RegularText text={data.content} />
       </View>
-
+      {readMore!="" && 
+      <TouchableOpacity onPress={setMaxHeight} style={styles.readMoreButton}>
+        <SmallText  text={readMore} />
+      </TouchableOpacity>}
       {data.mediaUrl != "null" && (
         <View style={styles.postImageContainer}>
           <Image source={{ uri: data.mediaUrl }} style={styles.postImage} />
@@ -162,7 +180,7 @@ const Post = ({ data, onImgPress, setRender }) => {
             onPress={() => likeHandle(data.id, myUser.id)}
           />
         </View>
-        <View style={[styles.buttonContainer,{marginRight:20}]}>
+        <View style={[styles.buttonContainer, { marginRight: 20 }]}>
           <SmallText text={`${likes.length} ` + "לייקים"} />
         </View>
       </View>
@@ -176,13 +194,18 @@ const styles = StyleSheet.create({
     paddingHorizontal: 15,
     paddingBottom: 20,
     alignItems: "flex-start",
+    overflow: 'scroll',
+
+  },
+  readMoreButton:{
+    margin:8,marginRight:15, borderTopWidth:0.5,borderTopColor:colorPalate.lightGrey,paddingTop:8,alignItems:"flex-end",
   },
   container: {
     flex: 1,
     width: "100%",
     backgroundColor: "#fff",
     padding: 8,
-    paddingBottom:25,
+    paddingBottom: 25,
     marginBottom: 15,
   },
   deleteIcon: {

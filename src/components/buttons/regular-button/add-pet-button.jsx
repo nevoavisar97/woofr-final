@@ -6,7 +6,7 @@ import {
   TouchableOpacity,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
-import { useFonts, Assistant_700Bold } from "@expo-google-fonts/assistant";
+import { useFonts, Rubik_700Bold } from "@expo-google-fonts/assistant";
 
 // App color palate
 import { colorPalate } from "../../../utils/ui/colors";
@@ -21,7 +21,7 @@ const AddPetButton = ({
 }) => {
   // Load the Assistant bold font
   const [fontsLoaded] = useFonts({
-    Assistant_700Bold,
+    Rubik_700Bold,
   });
 
   if (!fontsLoaded) {

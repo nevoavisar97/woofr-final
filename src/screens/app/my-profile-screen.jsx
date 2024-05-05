@@ -338,6 +338,7 @@ const styles = StyleSheet.create({
     borderRadius: 80,
     marginBottom: 3,
     marginTop: 3,
+    borderWidth:0.1,
   },
   buttonsContainer: {
     flexDirection: "row",
