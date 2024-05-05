@@ -54,7 +54,6 @@ const HomeScreen = () => {
 
   //fetch posts to display on homepage
   const fetchPosts = async () => {
-    
     const res = await getHomePagePosts(myUser.id);
     setPosts(res);
   };
@@ -141,13 +140,13 @@ const fetchPets = async () =>{
           }}
         />
         <View style={styles.postsArea}>
-          {posts.length > 0 && (
+          
             <PostSlider
               arr={posts}
               onImgPress={moveToProfile}
               setRender={onRefresh}
             />
-          )}
+
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -157,7 +156,7 @@ const fetchPets = async () =>{
 const styles = StyleSheet.create({
   postsArea: {
     width: "100%",
-    backgroundColor: colorPalate.lightGrey,
+    backgroundColor: colorPalate.grey,
   },
   heading: {
     marginLeft: 10,

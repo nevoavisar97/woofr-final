@@ -2,7 +2,7 @@ import React from "react";
 import { StyleSheet, View, TouchableOpacity, Text } from "react-native";
 
 // Import fonts and icons
-import { useFonts, Assistant_400Regular } from "@expo-google-fonts/assistant";
+import { useFonts, Rubik_400Regular } from "@expo-google-fonts/rubik";
 import { FontAwesome5 } from "@expo/vector-icons";
 
 // Import Lodash utility library for functional programming helpers
@@ -24,7 +24,7 @@ const AddPost = ({ onPress }) => {
 
   // Load the Assistant font
   const [fontsLoaded] = useFonts({
-    Assistant_400Regular,
+    Rubik_400Regular,
   });
 
   if (!fontsLoaded) {
@@ -36,7 +36,7 @@ const AddPost = ({ onPress }) => {
       <TouchableOpacity style={styles.button} onPress={onPress}>
         <View style={styles.row}>
           <FontAwesome5 name="paw" size={24} color="white" />
-          <Text style={[styles.text, { fontFamily: "Assistant_400Regular" }]}>
+          <Text style={[styles.text, { fontFamily: "Rubik_400Regular" }]}>
             {getRandomText()}
           </Text>
         </View>

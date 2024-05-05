@@ -4,16 +4,16 @@ import { StyleSheet, Text } from "react-native";
 //Import fonts
 import {
   useFonts,
-  Assistant_400Regular,
-  Assistant_700Bold,
-} from "@expo-google-fonts/assistant";
+  Rubik_400Regular,
+  Rubik_700Bold,
+} from "@expo-google-fonts/rubik";
 
 const RegularText = ({ text, english = false, color, onPress }) => {
   const textAlign = !english ? "left" : "right";
 
   const [fontsLoaded] = useFonts({
-    Assistant_400Regular,
-    Assistant_700Bold,
+    Rubik_400Regular,
+    Rubik_700Bold,
   });
 
   if (!fontsLoaded) {
@@ -28,7 +28,7 @@ const RegularText = ({ text, english = false, color, onPress }) => {
         {
           color: color,
           textAlign: textAlign,
-          fontFamily: "Assistant_400Regular",
+          fontFamily: "Rubik_400Regular",
         },
       ]}
     >

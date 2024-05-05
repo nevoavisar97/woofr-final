@@ -44,9 +44,9 @@ const Post = ({ data, onImgPress, setRender }) => {
 
   // An array containing users who liked the post
   const [likes, setLikes] = useState([]);
-  
+
   const [maxH, setMaxH] = useState(290);
-  
+
   const [readMore, setReadMore] = useState("");
 
   // Indicates whether the current user has liked the post
@@ -76,13 +76,13 @@ const Post = ({ data, onImgPress, setRender }) => {
   };
 
   const setMaxHeight = () => {
-    if (maxH === 290){
+    if (maxH === 290) {
       setMaxH("100%");
       setReadMore("צמצום");
     }
-    else{
-    setReadMore("קרא/י עוד");
-    setMaxH(290);
+    else {
+      setMaxH(290);
+      setReadMore("קרא/י עוד");
     }
   }
 
@@ -106,7 +106,6 @@ const Post = ({ data, onImgPress, setRender }) => {
     setIsMyPost(data.userId === (myUser && myUser.id));
     if (!isMyPost) {
       const res = await GetUserInfo(data.userId);
-      setUserData(res);
       setUserData(res);
     } else {
       setUserData(myUser);
@@ -144,18 +143,21 @@ const Post = ({ data, onImgPress, setRender }) => {
             style={styles.avatar}
           />
         </TouchableOpacity>
-        <View style={styles.userInfo}>
-          <RegularTextBold
-            text={`${userData.firstName} ${userData.lastName}`}
-            style={styles.username}
-          />
-          <SmallText text={timeStr} style={styles.infoText} />
-        </View>
-
+        <TouchableOpacity
+          onPress={() => onImgPress(userData.id)}
+        >
+          <View style={styles.userInfo}>
+            <RegularTextBold
+              text={`${userData.firstName} ${userData.lastName}`}
+              style={styles.username}
+            />
+            <SmallText text={timeStr} style={styles.infoText} />
+          </View>
+        </TouchableOpacity>
         {isMyPost && (
           <View style={styles.deleteIcon}>
             <TouchableOpacity onPress={() => deletePostById(data.id)}>
-              <AntDesign name="delete" size={22} color="lightgrey" />
+              <AntDesign name="delete" size={22} color={colorPalate.lightGrey} />
             </TouchableOpacity>
           </View>
         )}
@@ -163,10 +165,10 @@ const Post = ({ data, onImgPress, setRender }) => {
       <View style={[styles.input, { maxHeight: maxH }]}>
         <RegularText text={data.content} />
       </View>
-      {readMore!="" && 
-      <TouchableOpacity onPress={setMaxHeight} style={styles.readMoreButton}>
-        <SmallText  text={readMore} />
-      </TouchableOpacity>}
+      {readMore != "" &&
+        <TouchableOpacity onPress={setMaxHeight} style={styles.readMoreButton}>
+          <SmallText text={readMore} />
+        </TouchableOpacity>}
       {data.mediaUrl != "null" && (
         <View style={styles.postImageContainer}>
           <Image source={{ uri: data.mediaUrl }} style={styles.postImage} />
@@ -199,8 +201,8 @@ const styles = StyleSheet.create({
     overflow: 'scroll',
 
   },
-  readMoreButton:{
-    margin:8,marginRight:15, borderTopWidth:0.5,borderTopColor:colorPalate.lightGrey,paddingTop:8,alignItems:"flex-end",
+  readMoreButton: {
+    margin: 8, marginRight: 15, borderTopWidth: 0.5, borderTopColor: colorPalate.lightGrey, paddingTop: 8, alignItems: "flex-end",
   },
   container: {
     flex: 1,

@@ -9,7 +9,7 @@
     "web": "expo start --web"
   },
   "dependencies": {
-    "@expo-google-fonts/assistant": "^0.2.3",
+    "@expo-google-fonts/rubik": "^0.2.3",
     "@expo-google-fonts/heebo": "^0.2.3",
     "@expo-google-fonts/rubik": "^0.2.3",
     "@expo-google-fonts/varela-round": "^0.2.3",

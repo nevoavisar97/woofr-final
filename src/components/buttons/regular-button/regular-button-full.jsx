@@ -5,7 +5,7 @@ import {
   Text,
   TouchableOpacity,
 } from "react-native";
-import { useFonts, Assistant_400Regular } from "@expo-google-fonts/assistant";
+import { useFonts, Rubik_400Regular } from "@expo-google-fonts/rubik";
 import { Ionicons } from "@expo/vector-icons";
 
 // App color palate
@@ -14,7 +14,7 @@ import { colorPalate } from "../../../utils/ui/colors";
 const RegularButtonFullW = ({ text, textColor,onPress, color, iconName,loading = false }) => {
   // Load the Assistant font
   const [fontsLoaded] = useFonts({
-    Assistant_400Regular,
+    Rubik_400Regular,
   });
 
   if (!fontsLoaded) {
@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     textAlign: "left",
     margin:5,
-    fontFamily: "Assistant_400Regular", // Use Assistant regular font
+    fontFamily: "Rubik_400Regular", // Use Assistant regular font
   },
 });
 

@@ -317,9 +317,9 @@ const styles = StyleSheet.create({
   },
   postsArea: {
     borderTopWidth: 0.5,
-    borderTopColor: colorPalate.lightGrey,
+    borderTopColor: colorPalate.grey,
     width: "100%",
-    backgroundColor: colorPalate.lightGrey,
+    backgroundColor: colorPalate.grey,
     paddingBottom: 30,
   },
   topArea: {

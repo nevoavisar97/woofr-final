@@ -2,7 +2,7 @@ import React from "react";
 import { StyleSheet, View, TouchableOpacity, Text } from "react-native";
 
 // Import fonts and icons
-import { useFonts, Assistant_400Regular } from "@expo-google-fonts/assistant";
+import { useFonts, Rubik_400Regular } from "@expo-google-fonts/rubik";
 
 //Import app color palate
 import { colorPalate } from "../../../utils/ui/colors";
@@ -10,7 +10,7 @@ import { colorPalate } from "../../../utils/ui/colors";
 const AddReview = ({ onPress }) => {
   // Load the Assistant font
   const [fontsLoaded] = useFonts({
-    Assistant_400Regular,
+    Rubik_400Regular,
   });
 
   if (!fontsLoaded) {
@@ -21,7 +21,7 @@ const AddReview = ({ onPress }) => {
     <View style={styles.container}>
       <TouchableOpacity style={styles.button} onPress={onPress}>
         <View style={styles.row}>
-          <Text style={[styles.text, { fontFamily: "Assistant_400Regular" }]}>
+          <Text style={[styles.text, { fontFamily: "Rubik_400Regular" }]}>
             {"שליחה"}
           </Text>
         </View>

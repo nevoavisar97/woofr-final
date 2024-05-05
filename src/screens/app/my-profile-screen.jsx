@@ -299,7 +299,7 @@ const ProfileScreen = () => {
 
 const styles = StyleSheet.create({
   selectedPet: {
-    borderRadius: 15, marginBottom: 20, padding: 10, marginHorizontal: 20, borderWidth: 2, backgroundColor: colorPalate.primaryLightx, borderColor: colorPalate.primary, alignItems: "center"
+    borderRadius: 15, marginBottom: 20, padding: 10, marginHorizontal: 20, borderWidth: 2, backgroundColor: colorPalate.primaryLightx, borderColor: colorPalate.primary, alignItems: "flex-start"
   },
   container: {
     marginTop: 1,
@@ -313,7 +313,7 @@ const styles = StyleSheet.create({
   },
   postsArea: {
     width: "100%",
-    backgroundColor: colorPalate.lightGrey,
+    backgroundColor: colorPalate.grey,
     paddingBottom: 30,
   },
   header: {

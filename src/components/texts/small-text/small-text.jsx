@@ -2,13 +2,13 @@ import React from "react";
 import { StyleSheet, Text } from "react-native";
 
 //Import fonts
-import { useFonts, Assistant_400Regular } from "@expo-google-fonts/assistant";
+import { useFonts, Rubik_400Regular } from "@expo-google-fonts/rubik";
 
 const SmallText = ({ color, text, english = false }) => {
   const textAlign = !english ? "left" : "right";
   const t_color = !color ? "grey" : color;
   const [fontsLoaded] = useFonts({
-    Assistant_400Regular,
+    Rubik_400Regular,
   });
 
   if (!fontsLoaded) {
@@ -19,7 +19,7 @@ const SmallText = ({ color, text, english = false }) => {
     <Text
       style={[
         styles.text,
-        { color: t_color, textAlign, fontFamily: "Assistant_400Regular" },
+        { color: t_color, textAlign, fontFamily: "Rubik_400Regular" },
       ]}
     >
       {text}
