@@ -1,14 +1,14 @@
 export const signupValidator = (formData) => {
   // Validation for first name
-  if (formData.firstName.length < 3) {
-    return { isValid: false, errorMessage: "שם פרטי חייב להיות לפחות 3 תווים" };
+  if (formData.firstName.length < 2) {
+    return { isValid: false, errorMessage: "שם פרטי חייב להיות לפחות 2 תווים" };
   }
 
   // Validation for last name
-  if (formData.lastName.length < 3) {
+  if (formData.lastName.length < 2) {
     return {
       isValid: false,
-      errorMessage: "שם משפחה חייב להיות לפחות 3 תווים",
+      errorMessage: "שם משפחה חייב להיות לפחות 2 תווים",
     };
   }
 
@@ -40,7 +40,7 @@ export const signupValidator = (formData) => {
 
   // Validation for gender
   if (!formData.gender) {
-    return { isValid: false, errorMessage: "בבקשה תבחר מין" };
+    return { isValid: false, errorMessage: "יש לבחור מין" };
   }
 
   // All validations passed

@@ -111,13 +111,7 @@ const HomeScreen = () => {
     }, [])
   );
 
-  useEffect(() => {
-    const apiUrl = `https://proj.ruppin.ac.il/cgroup22/test2/Tar1/api/Genres`
-    fetch(apiUrl, {
-      method: "GET",
-      headers: new Headers({ 'Content-Type': 'application/json; charset=UTF-8' })
-    }).then(res =>res.json()).then(res => console.log(res)).catch(err => console.log('error',err))
-  }, [])
+
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <View style={styles.header}>
@@ -126,9 +120,6 @@ const HomeScreen = () => {
           <Image
             source={{ uri: myUser.profilePictureUrl }}
             style={styles.profileImage}
-          />
-          <SmallText
-            text={`שלום ${myUser.firstName}!`}
           />
         </TouchableOpacity>
       </View>
@@ -177,15 +168,7 @@ const styles = StyleSheet.create({
     width: "100%",
     backgroundColor: colorPalate.grey,
   },
-  userLogged:{
-    flexDirection:"row-reverse",alignItems:"center",backgroundColor:"#fffcfc",
-    paddingHorizontal:6,
-    paddingVertical:4,
-    gap:6,
-    borderRadius:35,
-    borderWidth:0.2,
-    borderColor:"grey"
-  },
+
   heading: {
     marginLeft: 10,
     width: 220,
@@ -197,11 +180,13 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
   },
   profileImage: {
-    width: 35,
-    height: 35,
+    width: 45,
+    height: 45,
+    margin:8,
+    borderColor:colorPalate.primary,
+    borderWidth:1,
     resizeMode: "cover",
     borderRadius: 80,
-    borderWidth: 0.1,
   },
   header: {
     justifyContent: "space-between",

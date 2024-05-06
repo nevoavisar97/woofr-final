@@ -37,7 +37,7 @@ const CustomSearchBar = ({ onPressSearch }) => {
         <View style={styles.button}>
           <TouchableOpacity
           >
-            <FontAwesome5 name="search" size={21} color={'#A9A9A9'} />
+            <FontAwesome5 name="search" size={21} color={colorPalate.primary} />
           </TouchableOpacity>
         </View>
       </View>
@@ -57,8 +57,9 @@ const styles = StyleSheet.create({
   },
   searchBar: {
     borderRadius: 10,
-
-    backgroundColor: colorPalate.lightGrey,
+    borderColor: colorPalate.lightGrey,
+    borderWidth:1,
+    backgroundColor: "#f5f5f5",
     width: "100%",
     flexDirection: "row"
   },

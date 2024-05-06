@@ -34,6 +34,7 @@ import LoadingIndicator from "../../../components/animation/loading-indicator/lo
 
 // Importing function from the API file
 import { insertPet } from "../../../utils/api/pet";
+import { petValidator } from "../../../utils/scripts/pet-validate";
 
 const AddPet = ({ showRegister, setRender }) => {
 
@@ -143,6 +144,7 @@ const AddPet = ({ showRegister, setRender }) => {
       url = await uploadImage(image, `petByProfile/${petData.id}`);
       // Update profilePictureUrl in updatedUser with the newly uploaded image URL
     }
+    else url = "https://img.freepik.com/free-vector/pet-logo-design-paw-vector-animal-shop-business_53876-136741.jpg"
     const newPet = {
       id: petData.id,
       userId: myUser.id,
@@ -152,16 +154,24 @@ const AddPet = ({ showRegister, setRender }) => {
       bio: petData.bio,
       imageUrl: url,
     }
-    const res = await insertPet(newPet);
-    if (res) {
-      showRegister(false);
-      setRender();
+    const petCheck = petValidator(newPet);
+    if (petCheck.isValid) {
+      const res = await insertPet(newPet);
+      if (res) {
+        showRegister(false);
+        setRender();
+      } else {
+        setLoading(false);
+        // If authentication fails, display a snackbar with an error message
+        
+      }
     } else {
       setLoading(false);
-      // If authentication fails, display a snackbar with an error message
-      showSnackbar("הייתה בעיה לרשום את הפרופיל", 3000);
+      showSnackbar(petCheck.errorMessage, 3000);
     }
+    setImage(null);
   };
+  
 
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
@@ -261,9 +271,9 @@ const styles = StyleSheet.create({
     marginBottom: 50,
     paddingBottom: 35,
     borderBottomLeftRadius: 25,
-    borderColor: colorPalate.lightGrey,
+    borderColor: "#e6e6e6",
     borderWidth: 2,
-    marginTop:-3,
+    marginTop: -7,
   },
   circleContainer: {
 

@@ -11,6 +11,7 @@ import { types } from "../../../utils/data/types";
 import SmallText from "../../texts/small-text/small-text";
 import Checkbox from "expo-checkbox";
 import CustomTextInput from "../../inputs/custom-text-input/custom-text-input";
+import RatingBar from "../../cards/rating-bar/rating-bar";
 
 const ProfessionalFilter = ({ data, setData }) => {
   // State for managing the visibility of the dropdown
@@ -62,6 +63,7 @@ const ProfessionalFilter = ({ data, setData }) => {
       <View style={styles.row}>
         <View style={styles.selectRow}>
           <CustomTextInput
+            height={48}
             value={data.city}
             placeholder="עיר "
             style={styles.input}
@@ -70,7 +72,6 @@ const ProfessionalFilter = ({ data, setData }) => {
               setData({ ...data, city: value });
             }}
           />
-
           <View>
             <DropDownPicker
               open={openDropdown}
@@ -78,10 +79,12 @@ const ProfessionalFilter = ({ data, setData }) => {
               items={types}
               setOpen={setOpenDropdown}
               placeholder="בחר מקצוע"
-              style={styles.dropdown}
+              style={[styles.dropdown, { borderColor: colorPalate.grey, borderWidth: 1}]}
               containerStyle={styles.dropdownContainerStyle}
               dropDownDirection="BOTTOM"
               listMode="SCROLLVIEW"
+              textStyle={{ textAlign: 'left' }}
+              dropDownContainerStyle={{ borderColor: colorPalate.grey, borderWidth: 1}}
               onSelectItem={(item) => {
                 setData({ ...data, type: item.value });
               }}
@@ -94,6 +97,7 @@ const ProfessionalFilter = ({ data, setData }) => {
 };
 
 const styles = StyleSheet.create({
+
   container: {
     padding: 6,
   },
@@ -111,6 +115,7 @@ const styles = StyleSheet.create({
     gap: 6,
   },
   selectRow: {
+    marginTop: 15,
     flexDirection: "row",
     justifyContent: "space-evenly",
     alignItems: "center",
@@ -120,8 +125,9 @@ const styles = StyleSheet.create({
     zIndex: 999,
   },
   dropdownContainerStyle: {
+    borderRadius: 10,
     width: 200,
-    zIndex: 999,
+    zIndex:10000,
   },
 });
 

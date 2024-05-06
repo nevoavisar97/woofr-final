@@ -96,8 +96,9 @@ const ProfessionalsScreen = () => {
 
       {showFilters && (
         <>
-          <ProfessionalFilter data={resultsFilter} setData={setResultsFilter} />
-
+          <>
+            <ProfessionalFilter data={resultsFilter} setData={setResultsFilter} />
+          </>
           <View style={styles.buttonContainer}>
             <RegularButtonFullW
               text={"סינון תוצאות"}
@@ -138,8 +139,12 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     width: "100%",
     alignItems: "center",
+    borderBottomWidth: 1,
+    borderBottomColor: colorPalate.lightGrey,
   },
   buttonContainer: {
+    zIndex: 500,
+    marginTop: 50,
     padding: 4,
     margin: 4,
   },

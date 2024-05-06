@@ -39,6 +39,7 @@ import RegularTextBold from "../../components/texts/regular-text/regular-text-bo
 import RegularText from "../../components/texts/regular-text/regular-text";
 import PetHeading from "../../components/texts/pet-heading/pet-heading";
 import AddPetButton from "../../components/buttons/regular-button/add-pet-button";
+
 const ProfileScreen = () => {
   //Navigation handler
   const navigation = useNavigation();

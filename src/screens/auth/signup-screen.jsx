@@ -45,6 +45,7 @@ import GoBackButton from "../../components/buttons/go-back/go-back-button";
 import CustomTextInput from "../../components/inputs/custom-text-input/custom-text-input";
 import PasswordInput from "../../components/inputs/password-input/password-input";
 import BigTextBold from "../../components/texts/big-text/big-text-bold";
+import RegularTextBold from "../../components/texts/regular-text/regular-text-bold";
 
 //Check the mobile device os
 const isIos = Platform.OS === "ios";
@@ -144,13 +145,17 @@ const SignupScreen = () => {
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <StatusBar />
-      <View style={{ alignItems: "flex-end" }}>
+      <View style={styles.header1}>
         <GoBackButton
           onPress={() => {
             navigation.goBack();
           }}
         />
+        <View>
+          <RegularTextBold text={"הרשמה"} />
+        </View>
       </View>
+
       <View style={styles.container}>
         <View style={styles.header}>
           <BigTextBold text={"הצטרפו לחוויה שלנו"} />
@@ -232,7 +237,7 @@ const SignupScreen = () => {
           <View style={styles.input}>
             <DropDownPicker
               rtl={true}
-              style={styles.picker}
+              style={[styles.picker, { marginTop:5,borderColor: colorPalate.grey, borderWidth: 1 }]}
               open={openGender}
               value={userData.gender}
               items={genders}
@@ -240,12 +245,13 @@ const SignupScreen = () => {
               onSelectItem={(value) => {
                 setUserData({ ...userData, gender: value.value });
               }}
+              textStyle={{ textAlign: 'left' }} 
+              dropDownContainerStyle={{ borderColor: colorPalate.grey, borderWidth: 1 }}
               placeholder="בחרו מגדר"
               dropDownDirection="BOTTOM"
-              dropDownContainerStyle={colorPalate.white}
             />
           </View>
-          <View style={{ marginTop: 165, width: 300 }}>
+          <View style={{ marginTop: 100, width: 300 }}>
             <RegularButton
               loading={buttonLoading}
               text={"הרשמה"}
@@ -286,12 +292,23 @@ const styles = StyleSheet.create({
     alignItems: "center",
     paddingBottom: 10,
   },
+  header1:{
+    flexDirection: "row-reverse",
+    justifyContent: "space-between",
+    paddingLeft:20,
+    paddingRight:30,
+    marginBottom:40,
+    width: "100%",
+    alignItems: "center",
+    borderBottomWidth:1,
+    borderBottomColor:colorPalate.lightGrey,
+  },
   header: {
     alignItems: "flex-start",
     justifyContent: "flex-start",
     direction: "rtl",
     textAlign: "left",
-    paddingHorizontal: 20,
+    paddingHorizontal: 30,
     paddingBottom: 40,
   },
   input: {
