@@ -133,7 +133,7 @@ const UserProfileScreen = () => {
       navigation.navigate("search-rating", { data: professional });
     }
     if (currentStack === "home-profile") {
-      navigation.navigate("home-rating", { data: professional });
+      navigation.navigate("home-rating", { data: professional});
     }
   };
 
@@ -163,23 +163,23 @@ const UserProfileScreen = () => {
     setPets(res);
   };
 
-// Function to handle filter selection
-const handlePetFilter = async (petId) => {
-  if (petId == "none") {
-    const res = await getUserPosts(id);
-    if (res) {
-      setPosts([]);
-      setPosts(res);
+  // Function to handle filter selection
+  const handlePetFilter = async (petId) => {
+    if (petId == "none") {
+      const res = await getUserPosts(id);
+      if (res) {
+        setPosts([]);
+        setPosts(res);
+      }
     }
-  }
-  else {
-    const res = await getPetPosts(petId);
-    if (res) {
-      setPosts([]);
-      setPosts(res);
+    else {
+      const res = await getPetPosts(petId);
+      if (res) {
+        setPosts([]);
+        setPosts(res);
+      }
     }
-  }
-};
+  };
 
   // Asynchronously fetches user posts based on the provided 'id' and updates the 'posts' state.
   const fetchUserPosts = async () => {
@@ -210,6 +210,7 @@ const handlePetFilter = async (petId) => {
     loadFollowData();
     fetchUserPosts();
   }, [followThis]);
+
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
@@ -301,7 +302,7 @@ const handlePetFilter = async (petId) => {
           </Snackbar>
           {pets.length > 0 && (
             <View>
-              <PetHeading/>
+              <PetHeading />
               <PetSlider
                 arr={pets}
                 onPress={handlePetFilter}
@@ -328,7 +329,6 @@ const styles = StyleSheet.create({
     borderTopColor: colorPalate.grey,
     width: "100%",
     backgroundColor: colorPalate.grey,
-    paddingBottom: 30,
   },
   topArea: {
     paddingHorizontal: 25,

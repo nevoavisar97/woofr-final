@@ -1,25 +1,25 @@
 {
-
   "expo": {
-    
     "name": "woofr",
     "slug": "woofr",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
-    
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    
     "assetBundlePatterns": [
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "infoPlist": {
+        "ExpoLocalization_supportsRTL": true
+      },
+      "bundleIdentifier": "com.nevoavisar97.woofr"
     },
     "android": {
       "adaptiveIcon": {
@@ -33,9 +33,14 @@
     },
     "sdkVersion": "50.0.0",
     "extra": {
-      "supportsRTL": true
+      "supportsRTL": true,
+      "eas": {
+        "projectId": "3269c4df-9f83-466a-bcf4-2cefab77f490"
+      }
     },
-    "plugins": ["expo-localization"]
+    "plugins": [
+      "expo-localization"
+    ]
   },
   "name": "woofr"
 }

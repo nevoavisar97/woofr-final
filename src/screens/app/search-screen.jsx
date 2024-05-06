@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { SafeAreaView, StyleSheet } from "react-native";
+import React, { useState, useEffect } from "react";
+import { SafeAreaView, StyleSheet, View } from "react-native";
 
 //Importing function from the API file
 import { SearchUser } from "../../utils/api/user";
@@ -7,9 +7,8 @@ import { SearchUser } from "../../utils/api/user";
 //Navigation handler
 import { useNavigation } from "@react-navigation/native";
 //Redux state management
-import { useDispatch, useSelector } from "react-redux";
-import { login, selectAuth } from "../../redux/authSlice";
-
+import { useSelector } from "react-redux";
+import {selectAuth } from "../../redux/authSlice";
 //Custom components
 import CustomSearchBar from "../../components/inputs/search-bar/custom-search-bar";
 import SearchList from "../../components/scroll/search-list/search-list";
@@ -20,7 +19,6 @@ const SearchScreen = () => {
 
   const auth = useSelector(selectAuth);
   const myUser = auth.user ? JSON.parse(auth.user) : null;
-  const dispatch = useDispatch();
 
   //Importing the useNavigation hook from React Navigation to access navigation prop
   const navigation = useNavigation();
@@ -39,7 +37,7 @@ const SearchScreen = () => {
 
   // Navigates to the user profile screen with the specified 'id'.
   const moveToUserProfile = (id) => {
-    if(id === myUser.id){
+    if (id === myUser.id) {
       navigation.navigate("profile-index");
     }
     else navigation.navigate("search-profile", { id: id });
@@ -48,7 +46,7 @@ const SearchScreen = () => {
   return (
     <SafeAreaView style={styles.container}>
       <CustomSearchBar onPressSearch={fetchSearchResult} />
-      <SearchList users={users} onClick={moveToUserProfile} />
+       <SearchList users={users} onClick={moveToUserProfile} />
     </SafeAreaView>
   );
 };
@@ -57,6 +55,10 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
+  tip: {
+    alignItems: "center",
+    paddingVertical: 150,
+  }
 });
 
 export default SearchScreen;

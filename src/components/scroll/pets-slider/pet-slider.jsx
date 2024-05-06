@@ -8,7 +8,6 @@ import PetCard from "../../cards/pet-card/pet-card";
 const PetSlider = ({ arr, onPress, setRender }) => {
   const [clickedPetId, setClickedPetId] = useState(null);
   
-
   const handlePetPress = (petId,data) => {
     if (petId === clickedPetId) {
       setClickedPetId(null); // Clicking again on the same pet card removes the border and deselects the pet

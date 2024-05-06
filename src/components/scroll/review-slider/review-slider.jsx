@@ -4,6 +4,7 @@ import { StyleSheet, FlatList, View } from "react-native";
 // Custom components
 import EmptyCard from "../../cards/empty-card/empty-card";
 import ReviewCard from "../../cards/review-card/review-card";
+import { colorPalate } from "../../../utils/ui/colors";
 
 const ReviewSlider = ({ arr, onImgPress, setRender }) => {
   //Function to render review
@@ -43,8 +44,8 @@ const styles = StyleSheet.create({
     paddingVertical: 15,
     flex: 1,
     paddingHorizontal: 0,
-    width: "100%",
-    backgroundColor: "#F0F2F5",
+    width: "100%" ,
+    backgroundColor: colorPalate.lightGrey,
   },
   loadingContainer: {
     justifyContent: "center",

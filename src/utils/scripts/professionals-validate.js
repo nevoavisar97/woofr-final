@@ -1,6 +1,6 @@
 export const professionalValidate = (form) => {
-  if (form.displayName.length < 3) {
-    return { isValid: false, errorMessage: "שם עסק חייב להכין 3 תוויים לפחות" };
+  if (form.displayName.length < 2) {
+    return { isValid: false, errorMessage: "שם עסק חייב להכין 2 תוויים לפחות" };
   }
 
   if (form.type.length < 3) {
@@ -26,7 +26,7 @@ export const professionalValidate = (form) => {
 
   // All validations passed
   return {
-    isValid: true,
+    isValid: isValid,
     message: "כמה שניות ותהיה חלק מאיתנו",
   };
 };

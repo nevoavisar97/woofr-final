@@ -31,6 +31,8 @@ import AddPost from "../../components/buttons/add-post/add-post";
 import ExploreSlider from "../../components/scroll/explore-slider/explore-slider";
 import { getUserPets } from "../../utils/api/pet";
 import { colorPalate } from "../../utils/ui/colors";
+import RegularText from "../../components/texts/regular-text/regular-text";
+import SmallText from "../../components/texts/small-text/small-text";
 
 const HomeScreen = () => {
   //Navigation handler
@@ -47,7 +49,7 @@ const HomeScreen = () => {
   const [posts, setPosts] = useState([]);
   // Initialize state for storing the user's pets
   const [myPets, setMyPets] = useState([]);
-    // Retrieve user pets and set the values
+  // Retrieve user pets and set the values
 
   // Initialize state for storing the pros
   const [pros, setPros] = useState([]);
@@ -63,10 +65,11 @@ const HomeScreen = () => {
     const res = await getProsForHomePage();
     setPros(res);
   };
-const fetchPets = async () =>{
-  const pets = await getUserPets(myUser.id);
+
+  const fetchPets = async () => {
+    const pets = await getUserPets(myUser.id);
     setMyPets(pets);
-}
+  }
 
   // Function to handle refresh
   const onRefresh = useCallback(() => {
@@ -108,10 +111,26 @@ const fetchPets = async () =>{
     }, [])
   );
 
+  useEffect(() => {
+    const apiUrl = `https://proj.ruppin.ac.il/cgroup22/test2/Tar1/api/Genres`
+    fetch(apiUrl, {
+      method: "GET",
+      headers: new Headers({ 'Content-Type': 'application/json; charset=UTF-8' })
+    }).then(res =>res.json()).then(res => console.log(res)).catch(err => console.log('error',err))
+  }, [])
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <View style={styles.header}>
         <Image source={LogoImage} style={styles.logo} />
+        <TouchableOpacity onPress={() => moveToProfile(myUser.id)} style={styles.userLogged}>
+          <Image
+            source={{ uri: myUser.profilePictureUrl }}
+            style={styles.profileImage}
+          />
+          <SmallText
+            text={`שלום ${myUser.firstName}!`}
+          />
+        </TouchableOpacity>
       </View>
       <ScrollView
         nestedScrollEnabled={true}
@@ -128,7 +147,7 @@ const fetchPets = async () =>{
           <Ionicons name="caret-back-outline" size={24} color={"black"} />
         </TouchableOpacity>
 
-        <ExploreSlider arr={pros} onPress={moveToProfile}  />
+        <ExploreSlider arr={pros} onPress={moveToProfile} />
 
         <View
           style={styles.touchableContainer}
@@ -136,16 +155,16 @@ const fetchPets = async () =>{
         ></View>
         <AddPost
           onPress={() => {
-            navigation.navigate("home-post",{myPets});
+            navigation.navigate("home-post", { myPets });
           }}
         />
         <View style={styles.postsArea}>
-          
-            <PostSlider
-              arr={posts}
-              onImgPress={moveToProfile}
-              setRender={onRefresh}
-            />
+
+          <PostSlider
+            arr={posts}
+            onImgPress={moveToProfile}
+            setRender={onRefresh}
+          />
 
         </View>
       </ScrollView>
@@ -158,6 +177,15 @@ const styles = StyleSheet.create({
     width: "100%",
     backgroundColor: colorPalate.grey,
   },
+  userLogged:{
+    flexDirection:"row-reverse",alignItems:"center",backgroundColor:"#fffcfc",
+    paddingHorizontal:6,
+    paddingVertical:4,
+    gap:6,
+    borderRadius:35,
+    borderWidth:0.2,
+    borderColor:"grey"
+  },
   heading: {
     marginLeft: 10,
     width: 220,
@@ -168,18 +196,25 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "white",
   },
+  profileImage: {
+    width: 35,
+    height: 35,
+    resizeMode: "cover",
+    borderRadius: 80,
+    borderWidth: 0.1,
+  },
   header: {
-    justifyContent: "flex-start",
-    alignItems: "flex-start",
-    padding: 8,
-    width: "100%",
+    justifyContent: "space-between",
+    alignItems: "center",
+    flexDirection:"row",
+    width: "90%",
+    alignSelf:"center",
     backgroundColor: "white",
   },
   logo: {
     width: 120,
     height: 60,
     resizeMode: "contain",
-    marginLeft: 10,
   },
   touchableContainer: {
     justifyContent: "end",

@@ -51,6 +51,7 @@ const styles = StyleSheet.create({
     width: 80,
     height: 80,
     borderRadius: 100,
+    borderWidth:0.3,
   },
   clickedAvatar: {
     borderColor: colorPalate.primary,

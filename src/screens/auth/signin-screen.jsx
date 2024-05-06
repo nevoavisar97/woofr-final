@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { SafeAreaView, StatusBar, StyleSheet, View } from "react-native";
+import { SafeAreaView, StatusBar, StyleSheet, View,TouchableWithoutFeedback,Keyboard } from "react-native";
 
 //Navigation handler
 import { useNavigation } from "@react-navigation/native";
@@ -90,60 +90,62 @@ const SigninScreen = () => {
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <StatusBar />
-      <View style={styles.container}>
-        <Logo />
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+        <View style={styles.container}>
+          <Logo />
 
-        <View style={styles.header}>
-          <BigTextBold text={"כיף לראות אותך שוב!"} />
-          <RegularText text={"התחברו עכשיו"} />
-        </View>
+          <View style={styles.header}>
+            <BigTextBold text={"כיף לראות אותך שוב!"} />
+            <RegularText text={"התחברו עכשיו"} />
+          </View>
 
-        <View>
-          <CustomTextInput
-            value={loginData.email}
-            placeholder="איימל"
-            style={styles.input}
-            english={true}
-            onChangeText={(value) => {
-              setLoginData({ ...loginData, email: value });
-            }}
-          />
-          <PasswordInput
-            value={loginData.password}
-            placeholder="סיסמא"
-            style={[styles.input, { textAlign: "right" }]}
-            width={formWidth}
-            onChangeText={(value) => {
-              setLoginData({ ...loginData, password: value });
-            }}
-          />
-        </View>
-
-        <View>
-          <View style={{ alignItems: "center", width: 200, marginTop: 55 }}>
-            <RegularButton
-              loading={buttonLoading}
-              text={"התחבר"}
-              onPress={handleLoginEvent}
-              color={colorPalate.primary}
-              iconName={"log-in-outline"}
+          <View>
+            <CustomTextInput
+              value={loginData.email}
+              placeholder="איימל"
+              style={styles.input}
+              english={true}
+              onChangeText={(value) => {
+                setLoginData({ ...loginData, email: value });
+              }}
+            />
+            <PasswordInput
+              value={loginData.password}
+              placeholder="סיסמא"
+              style={[styles.input, { textAlign: "right" }]}
+              width={formWidth}
+              onChangeText={(value) => {
+                setLoginData({ ...loginData, password: value });
+              }}
             />
           </View>
-          <View style={styles.divider}></View>
-        </View>
 
-        <View style={{ alignItems: "center", width: 250 }}>
-          <RegularText
-            text={"עדיין לא ב woofr? להרשמה"}
-            onPress={moveToSignup}
-            color={colorPalate.primary}
-          />
+          <View>
+            <View style={{ alignItems: "center", width: 200, marginTop: 55 }}>
+              <RegularButton
+                loading={buttonLoading}
+                text={"התחבר"}
+                onPress={handleLoginEvent}
+                color={colorPalate.primary}
+                iconName={"log-in-outline"}
+              />
+            </View>
+            <View style={styles.divider}></View>
+          </View>
+
+          <View style={{ alignItems: "center", width: 250 }}>
+            <RegularText
+              text={"עדיין לא ב woofr? להרשמה"}
+              onPress={moveToSignup}
+              color={colorPalate.primary}
+            />
+          </View>
         </View>
-      </View>
+      </TouchableWithoutFeedback>
 
       <Snackbar
         visible={snackbarOpen}
-        onDismiss={() => {}}
+        onDismiss={() => { }}
         action={{
           label: "סגור",
           onPress: () => {

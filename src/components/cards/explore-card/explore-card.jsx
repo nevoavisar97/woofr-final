@@ -7,12 +7,16 @@ import {
   Dimensions,
   ImageBackground,
 } from "react-native";
-
+import {
+  Rubik_400Regular,
+} from "@expo-google-fonts/rubik";
 //Import types data
 import { types } from "../../../utils/data/types";
 
 // Import app colors palate
 import { colorPalate } from "../../../utils/ui/colors";
+import RegularText from "../../texts/regular-text/regular-text";
+import RegularTextBold from "../../texts/regular-text/regular-text-bold";
 
 const ExploreCard = ({ data, onPress }) => {
   // Get the width of the device screen using the useWindowDimensions hook
@@ -40,11 +44,11 @@ const ExploreCard = ({ data, onPress }) => {
         />
 
         <View style={[styles.header, { backgroundColor: color }]}>
-          <Text style={styles.title}>{data.type}</Text>
+          <RegularText style={styles.title} color={"white"} text={data.type} />
         </View>
 
         <View style={styles.textContainer}>
-          <Text style={styles.title}>{data.displayName}</Text>
+          <RegularTextBold style={styles.title} color={"white"} text={data.displayName} />
           <Text style={styles.desc}>
             {data.description.length > 80
               ? data.description.slice(0, 80) + "..."
@@ -76,9 +80,10 @@ const styles = StyleSheet.create({
   header: {
     position: "absolute",
     left: 0,
-    top: 28,
+    top: 30,
     backgroundColor: colorPalate.primary,
     padding: 3,
+    paddingLeft:10,
     paddingRight: 10,
     borderTopRightRadius: 15,
     borderBottomRightRadius: 15,
@@ -89,20 +94,21 @@ const styles = StyleSheet.create({
     left: 0,
     bottom: 0,
     backgroundColor: "rgba(0, 0, 0, 0.5)",
-    padding: 20,
+    padding: 18,
     width: 320,
   },
   title: {
     color: colorPalate.white,
     fontSize: 18,
     fontWeight: "bold",
-    padding: 3,
+    paddingBottom: 3,
     textAlign: "left",
   },
   desc: {
     color: colorPalate.white,
     fontSize: 15,
     padding: 4,
+    fontFamily: "Rubik_400Regular",
     textAlign: "left",
   },
 });

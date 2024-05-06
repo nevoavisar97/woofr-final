@@ -242,7 +242,7 @@ const ProfileScreen = () => {
               <AddPetButton
                 onPress={handleAddPet}
                 iconName={icon}
-                color={colorPalate.lightGrey}
+                color={"#e6e6e6"}
                 text={"הוספת חיית מחמד"} />
               {addPetPressed &&
                 <AddPet
@@ -306,7 +306,6 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   heading: {
-
     width: 150,
     height: 70,
     resizeMode: "contain",
@@ -314,10 +313,10 @@ const styles = StyleSheet.create({
   postsArea: {
     width: "100%",
     backgroundColor: colorPalate.grey,
-    paddingBottom: 30,
   },
   header: {
-    paddingHorizontal: 25,
+    paddingTop:10,
+    paddingHorizontal: 36,
     flexDirection: "row",
     alignItems: "flex-start",
   },
@@ -344,7 +343,8 @@ const styles = StyleSheet.create({
   },
   buttonsContainer: {
     flexDirection: "row",
-    marginBottom: 15,
+    marginBottom: 2,
+    marginTop:17,
     paddingHorizontal: 29,
   },
   buttonView: {

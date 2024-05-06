@@ -8,7 +8,7 @@ import {
   Rubik_700Bold,
 } from "@expo-google-fonts/rubik";
 
-const RegularTextBold = ({ text, english = false }) => {
+const RegularTextBold = ({color, text, english = false }) => {
   const textAlign = !english ? "left" : "right";
 
   const [fontsLoaded] = useFonts({
@@ -24,7 +24,7 @@ const RegularTextBold = ({ text, english = false }) => {
     <Text
       style={[
         styles.text,
-        { textAlign: textAlign, fontFamily: "Rubik_700Bold" },
+        { color: color,textAlign: textAlign, fontFamily: "Rubik_700Bold" },
       ]}
     >
       {text}
@@ -36,7 +36,6 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 22,
     textAlign: "center",
-    padding: 4,
   },
 });
 

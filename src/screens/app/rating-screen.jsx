@@ -9,6 +9,7 @@ import {
   TouchableOpacity,
   Button,
 } from "react-native";
+import { reviewValidate } from "../../utils/scripts/review-validate";
 
 //App color palate
 import { colorPalate } from "../../utils/ui/colors";
@@ -34,7 +35,7 @@ import GoBackButton from "../../components/buttons/go-back/go-back-button";
 import ReviewSlider from "../../components/scroll/review-slider/review-slider";
 import RegularText from "../../components/texts/regular-text/regular-text";
 import AddReview from "../../components/buttons/add-review/add-review";
-import SmallText from "../../components/texts/small-text/small-text";
+
 
 const RatingScreen = () => {
   //Importing the useNavigation hook from React Navigation to access navigation prop
@@ -66,12 +67,10 @@ const RatingScreen = () => {
 
   //State to hold reviews
   const [prosReviews, setProsReviews] = useState([]);
-  
 
   const setRender = () => {
     setProsReviews([]);
     fetchProsReviews();
-
   };
 
   //State to store the review data
@@ -99,12 +98,25 @@ const RatingScreen = () => {
   //Function to upload review
   const uploadReview = async () => {
     //API post method to upload the image
-    const res = await insertReview(review);
+    const reviewCheck = reviewValidate(review.reviewText);
+    if (reviewCheck.isValid) {
+      const res = await insertReview(review);
+      setReview({ ...review, reviewText: "" })
+      if (res) {
+        fetchProsReviews();
 
-    if (res) {
-      fetchProsReviews();
-    } else {
-      showSnackbar("משהו השתבש בעת העלאת הביקורת", 3000);
+      }else {
+        showSnackbar("כבר כתבת ביקורת עבור עסק זה", 3000);
+        return;
+      }
+    } 
+    else{
+      setSnackBarText(reviewCheck.errorMessage);
+      setSnackbarOpen(true);
+      // Close the snackbar after 3 seconds
+      setTimeout(() => {
+        setSnackbarOpen(false);
+      }, 3000);
       return;
     }
   };
@@ -171,7 +183,7 @@ const RatingScreen = () => {
             <AddReview onPress={uploadReview} />
           </View>}
         {prosReviews.length > 0 ? (
-          <ReviewSlider arr={prosReviews} setRender={setRender}  onImgPress={() => { }} />
+          <ReviewSlider arr={prosReviews} setRender={setRender} onImgPress={() => { }} />
         ) : (
           <View style={{ alignItems: "center", marginTop: 25 }}>
             <RegularText text={"אין עדיין ביקורות"} />
@@ -236,7 +248,7 @@ const styles = StyleSheet.create({
   },
   snackbar: {
     position: "relative",
-    bottom: 70,
+    bottom: 100,
     right: 0,
     zIndex: 10,
   },

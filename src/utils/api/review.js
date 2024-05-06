@@ -34,7 +34,6 @@ export const insertReview = async (review) => {
     });
 
     if (!response.ok) {
-      alert("You already reviewd that profile!");
     } else {
       const responseData = await response.json();
       return responseData;

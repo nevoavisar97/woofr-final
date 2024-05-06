@@ -58,7 +58,7 @@ const AddPet = ({ showRegister, setRender }) => {
     id: uuid.v4(),
     userId: myUser.id,
     name: "",
-    birthYear: 2024,
+    birthYear: "",
     breed: "",
     bio: "",
     imageUrl: image,
@@ -263,6 +263,7 @@ const styles = StyleSheet.create({
     borderBottomLeftRadius: 25,
     borderColor: colorPalate.lightGrey,
     borderWidth: 2,
+    marginTop:-3,
   },
   circleContainer: {
 

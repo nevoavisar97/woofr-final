@@ -47,13 +47,12 @@ const AddPetButton = ({
 
 const styles = StyleSheet.create({
   button: {
-    padding: 5,
+    padding: 7,
     justifyContent: "center",
     alignItems: "center",
     width: "100%",
     elevation: 5,
-    borderTopRightRadius: 5,
-    borderTopLeftRadius: 5,
+    borderRadius: 10,
     flexDirection: "row",
     gap: 5,
   },
