@@ -26,7 +26,7 @@ export const getUserChats = async (id) => {
 };
 export const getTips = async () => {
   try {
-    const apiKey = "AIzaSyCWOavwRLzQhrO68xAOb-482fSreL02A5E"; // Replace with your actual API key
+    const apiKey = "AIzaSyCWOavwRLzQhrO68xAOb-482fSreL02A5E"; 
     const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${apiKey}`;
     const response = await fetch(apiUrl, {
       method: "POST",

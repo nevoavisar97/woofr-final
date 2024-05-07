@@ -26,7 +26,7 @@ export const professionalValidate = (form) => {
 
   // All validations passed
   return {
-    isValid: isValid,
+    isValid: true,
     message: "כמה שניות ותהיה חלק מאיתנו",
   };
 };

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { SafeAreaView, StyleSheet, View } from "react-native";
-import { useFocusEffect } from "@react-navigation/native";
+import { useFocusEffect, useNavigation } from "@react-navigation/native";
 
 //Redux state management
 import { useSelector } from "react-redux";
@@ -14,7 +14,9 @@ import Chats from "../../components/scroll/chats/chats";
 import LoadingIndicator from "../../components/animation/loading-indicator/loading-indicator";
 import BigTextBold from "../../components/texts/big-text/big-text-bold";
 
-const ChatsScreen = ({ navigation }) => {
+const ChatsScreen = () => {
+  const navigation = useNavigation();
+  
   // Use useSelector to access the Redux store state
   const auth = useSelector(selectAuth);
   const myUser = JSON.parse(auth.user);

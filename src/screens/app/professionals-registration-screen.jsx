@@ -196,6 +196,8 @@ const ProfessionalsRegistrationScreen = () => {
                 open={openDropdown}
                 value={professional.type ? professional.type : null}
                 items={types}
+                style={[{ marginTop:5,borderColor: colorPalate.grey, borderWidth: 1 }]}
+
                 setOpen={setOpenDropdown}
                 placeholder="בחר מקצוע"
                 dropDownDirection="BOTTOM"
@@ -206,6 +208,9 @@ const ProfessionalsRegistrationScreen = () => {
                     type: item.value,
                   });
                 }}
+                dropDownContainerStyle={{ borderColor: colorPalate.grey, borderWidth: 1 }}
+                textStyle={{ textAlign: 'left' }} 
+
               />
             </View>
 
