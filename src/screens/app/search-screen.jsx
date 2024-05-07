@@ -57,9 +57,6 @@ const SearchScreen = () => {
     const tip = await getTips();
     setTips(tip);
   };
-useEffect(() => {
-  getTip()
-}, [third])
 
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
