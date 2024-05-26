@@ -25,10 +25,7 @@ Woofr is built using a range of modern technologies and libraries to ensure a ro
 - **Redux**: For managing the app's state in a predictable way, ensuring data consistency and easy debugging.
 - **React Navigation**: For handling navigation within the app, providing a seamless user experience.
 - **SecureStore**: For secure storage of authentication tokens and sensitive data, ensuring user privacy.
-- **Formik and Yup**: For form handling and validation, making it easy to create and validate complex forms.
-- **Axios**: For making HTTP requests to the app's API, facilitating data exchange between the client and server.
 - **React Native Elements**: For building customizable and easy-to-use UI components, enhancing the app's design and usability.
-- **Lottie**: For adding animations to enhance user experience, making the app more engaging and interactive.
 - **Expo Permissions**: For handling permissions related to accessing the camera, photo library, and other device features, ensuring smooth functionality.
 
 ## Usage
@@ -39,10 +36,6 @@ Once the app is running, you can explore its various features:
 - **Add Pet Profiles**: Add your pets with their details, including name, breed, age, and bio. Share their unique stories and adorable photos with the community.
 - **Post and Share**: Share pictures of your pets, write posts about their activities, and follow other users to see their posts. Engage with the community by liking and commenting on posts.
 - **Review Businesses**: Find and review pet-related businesses like vets and trainers. Help others by sharing your experiences and reading reviews from other users.
-- **Schedule Appointments**: Use the AI-driven scheduler to book appointments with pet services. Get smart suggestions based on your preferences and availability, and never miss an important appointment.
-
-## Contributing
-
-We welcome contributions to Woofr! To contribute, please fork the repository and create a pull request with your changes. Make sure to follow the coding standards and include tests for any new features or bug fixes.
+- **Schedule Appointments**:  Get smart suggestions based on your preferences and availability.
 
 
