@@ -31,26 +31,6 @@ Woofr is built using a range of modern technologies and libraries to ensure a ro
 - **Lottie**: For adding animations to enhance user experience, making the app more engaging and interactive.
 - **Expo Permissions**: For handling permissions related to accessing the camera, photo library, and other device features, ensuring smooth functionality.
 
-## Installation and Setup
-
-To get started with Woofr, follow these steps:
-
-1. **Clone the repository:**
-   ```bash
-   git clone https://github.com/yourusername/woofr.git
-   cd woofr
-   ```
-
-2. **Install the dependencies:**
-   ```bash
-   npm install
-   ```
-
-3. **Start the app:**
-   ```bash
-   expo start
-   ```
-
 ## Usage
 
 Once the app is running, you can explore its various features:
@@ -65,37 +45,4 @@ Once the app is running, you can explore its various features:
 
 We welcome contributions to Woofr! To contribute, please fork the repository and create a pull request with your changes. Make sure to follow the coding standards and include tests for any new features or bug fixes.
 
-### How to Contribute
 
-1. **Fork the repository**: Click on the "Fork" button at the top right corner of this page.
-2. **Clone your fork**: 
-   ```bash
-   git clone https://github.com/yourusername/woofr.git
-   cd woofr
-   ```
-3. **Create a new branch**: 
-   ```bash
-   git checkout -b feature/your-feature-name
-   ```
-4. **Make your changes**: Implement your feature or bug fix.
-5. **Commit your changes**: 
-   ```bash
-   git commit -m "Add some feature"
-   ```
-6. **Push to your branch**: 
-   ```bash
-   git push origin feature/your-feature-name
-   ```
-7. **Create a pull request**: Go to the original repository and create a pull request with a description of your changes.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## Contact
-
-For any questions or suggestions, feel free to contact us at [your-email@example.com].
-
----
-
-Feel free to customize this README further based on specific details or preferences you have for your project!
